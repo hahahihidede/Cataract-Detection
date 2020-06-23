@@ -1,0 +1,2 @@
+0 katarak
+1 normal
