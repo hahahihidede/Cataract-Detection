@@ -12,7 +12,7 @@ import math
 if __name__ == '__main__':
 
    
-    labels_path = "bti.txt"
+    labels_path = "labels.txt"
 
     labelsfile = open(labels_path, 'r')
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     labelsfile.close()
 
 
-    model_path = 'bti.h5'
+    model_path = 'keras_model.h5'
     model = tf.models.load_model(model_path, compile=False)
 
  
@@ -42,7 +42,6 @@ if __name__ == '__main__':
 
     cap.set(cv2.CAP_PROP_GAIN, 0)
 
-    speakQ = multiprocessing.Queue()
 
 
     while True:
@@ -119,7 +118,6 @@ if __name__ == '__main__':
                 confLabel = ""
             
             if confidence[i] > confThreshold:
-                speakQ.put(classes[i])
                 threshold_class = classes[i]
                 # if classes [i]== "BRAMIDAE" :
                 #     print("BRAMIDAEEE")
