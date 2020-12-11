@@ -5,7 +5,6 @@ import multiprocessing
 import numpy as np
 import cv2
 import tensorflow.keras as tf
-import pyttsx3
 import math
 
 
