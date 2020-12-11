@@ -1,31 +1,32 @@
 #UTF-8
-import multiprocessing
+
 import numpy as np
 import cv2
 import tensorflow.keras as tf
+import pyttsx3
 import math
 
 
 if __name__ == '__main__':
 
    
-    labels_path = "labels.txt"
+    labelsPath = "labels.txt"
 
-    labelsfile = open(labels_path, 'r')
+    labelsFile = open(labelsPath, 'r')
 
 
     classes = []
-    line = labelsfile.readline()
+    line = labelsFile.readline()
     while line:
         
         classes.append(line.split(' ', 1)[1].rstrip())
-        line = labelsfile.readline()
+        line = labelsFile.readline()
     
-    labelsfile.close()
+    labelsFile.close()
 
 
-    model_path = 'keras_model.h5'
-    model = tf.models.load_model(model_path, compile=False)
+    modelPath = 'keras_model.h5'
+    model = tf.models.load_model(modelPath, compile=False)
 
  
     cap = cv2.VideoCapture(0)
@@ -39,6 +40,7 @@ if __name__ == '__main__':
 
     cap.set(cv2.CAP_PROP_GAIN, 0)
 
+    # speakQ = multiprocessing.Queue()
 
 
     while True:
@@ -115,6 +117,7 @@ if __name__ == '__main__':
                 confLabel = ""
             
             if confidence[i] > confThreshold:
+                # speakQ.put(classes[i])
                 threshold_class = classes[i]
                 # if classes [i]== "BRAMIDAE" :
                 #     print("BRAMIDAEEE")
