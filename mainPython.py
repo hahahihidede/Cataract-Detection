@@ -1,6 +1,4 @@
-
-
-
+#UTF-8
 import multiprocessing
 import numpy as np
 import cv2
